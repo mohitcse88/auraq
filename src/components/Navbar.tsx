@@ -6,7 +6,6 @@ import {
   User,
   Menu,
   X,
-  Palette,
   ShieldCheck,
   ChevronDown,
   ArrowRight,
@@ -17,7 +16,6 @@ import { Category } from '../types';
 export const Navbar: React.FC = () => {
   const {
     currentTheme,
-    setIsDesignModalOpen,
     activePage,
     setActivePage,
     cartCount,
@@ -65,15 +63,15 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-colors">
-      {/* Top Announcement Bar + Design Switcher Ticker */}
+      {/* Top Announcement Bar */}
       <div className="bg-neutral-900 text-neutral-200 text-[11px] sm:text-xs py-2 px-4 transition-colors">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
-          <div className="hidden sm:flex items-center gap-2 text-neutral-400">
+          <div className="flex items-center gap-2 text-neutral-400">
             <ShieldCheck size={13} className="text-neutral-300" />
             <span>Complimentary worldwide shipping on orders over $150</span>
           </div>
 
-          <div className="mx-auto sm:mx-0 flex items-center gap-2 text-center">
+          <div className="flex items-center gap-2 text-center">
             <span className="font-medium text-white">SPRING ATELIER:</span>
             <span className="text-neutral-300">Use code</span>
             <span
@@ -82,20 +80,8 @@ export const Navbar: React.FC = () => {
             >
               AURAQ15
             </span>
-            <span className="hidden md:inline text-neutral-400">for 15% off</span>
+            <span className="hidden sm:inline text-neutral-400">for 15% off</span>
           </div>
-
-          {/* Interactive Design System Selector Pill */}
-          <button
-            onClick={() => setIsDesignModalOpen(true)}
-            className="flex items-center gap-1.5 px-2.5 py-1 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full text-[11px] font-medium transition-all shadow-sm border border-neutral-700 hover:border-neutral-500"
-            title="Choose or preview design system theme"
-          >
-            <Palette size={12} style={{ color: currentTheme.accentColor }} />
-            <span className="hidden lg:inline text-neutral-300">Design:</span>
-            <span className="font-semibold">{currentTheme.name.split(' ')[0]}</span>
-            <span className="text-[10px] text-neutral-400 underline ml-0.5">Change</span>
-          </button>
         </div>
       </div>
 
@@ -356,20 +342,10 @@ export const Navbar: React.FC = () => {
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden border-t border-neutral-200 bg-white px-4 pt-3 pb-6 space-y-3">
-          <div className="flex items-center justify-between pb-2 border-b border-neutral-100">
+          <div className="pb-2 border-b border-neutral-100">
             <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
               Navigation
             </span>
-            <button
-              onClick={() => {
-                setIsDesignModalOpen(true);
-                setIsMobileMenuOpen(false);
-              }}
-              className="text-xs text-neutral-900 flex items-center gap-1 font-medium underline"
-            >
-              <Palette size={12} style={{ color: currentTheme.accentColor }} />
-              Theme: {currentTheme.name}
-            </button>
           </div>
 
           <div className="grid grid-cols-2 gap-2 text-sm font-medium">

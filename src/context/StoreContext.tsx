@@ -124,17 +124,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const defaultCobaltTheme =
     DESIGN_THEMES.find((t) => t.id === 'cobalt-atelier') || DESIGN_THEMES[0];
 
-  // Theme state - default to Cobalt Modern Atelier
-  const [currentTheme, setCurrentTheme] = useState<DesignTheme>(() => {
-    const saved = localStorage.getItem('auraq_theme');
-    if (saved && saved !== 'noir-amber') {
-      const found = DESIGN_THEMES.find((t) => t.id === saved);
-      if (found) return found;
-    }
-    return defaultCobaltTheme;
-  });
+  // Theme state - locked permanently to Cobalt Modern Atelier
+  const [currentTheme, setCurrentTheme] = useState<DesignTheme>(defaultCobaltTheme);
 
-  // Popup is disabled by default
+  // Popup and design options removed
   const [isDesignModalOpen, setIsDesignModalOpen] = useState<boolean>(false);
   const [hasSeenDesignPrompt, setHasSeenDesignPrompt] = useState<boolean>(true);
 
