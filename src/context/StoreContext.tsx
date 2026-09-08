@@ -121,23 +121,22 @@ interface StoreContextType {
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
 
 export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Theme state
+  const defaultCobaltTheme =
+    DESIGN_THEMES.find((t) => t.id === 'cobalt-atelier') || DESIGN_THEMES[0];
+
+  // Theme state - default to Cobalt Modern Atelier
   const [currentTheme, setCurrentTheme] = useState<DesignTheme>(() => {
     const saved = localStorage.getItem('auraq_theme');
-    if (saved) {
+    if (saved && saved !== 'noir-amber') {
       const found = DESIGN_THEMES.find((t) => t.id === saved);
       if (found) return found;
     }
-    return DESIGN_THEMES[0];
+    return defaultCobaltTheme;
   });
 
-  const [isDesignModalOpen, setIsDesignModalOpen] = useState<boolean>(() => {
-    // Show option to select design on initial load if not selected yet
-    return !localStorage.getItem('auraq_theme_chosen');
-  });
-  const [hasSeenDesignPrompt, setHasSeenDesignPrompt] = useState<boolean>(() => {
-    return !!localStorage.getItem('auraq_theme_chosen');
-  });
+  // Popup is disabled by default
+  const [isDesignModalOpen, setIsDesignModalOpen] = useState<boolean>(false);
+  const [hasSeenDesignPrompt, setHasSeenDesignPrompt] = useState<boolean>(true);
 
   // Navigation
   const [activePage, setActivePage] = useState<ActivePage>('home');

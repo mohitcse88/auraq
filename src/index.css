@@ -2,11 +2,11 @@
 
 @layer base {
   :root {
-    --font-heading: 'Poppins', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
-    --accent-color: #c97a3e;
-    --accent-hover: #b4672e;
-    --accent-light: #fbf3ed;
+    --accent-color: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: #eff6ff;
     --accent-text: #ffffff;
   }
 
