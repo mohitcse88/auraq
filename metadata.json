@@ -1,0 +1,6 @@
+{
+  "name": "AURAQ",
+  "description": "Modern, premium fashion ecommerce store for AURAQ clothing brand featuring seamless shopping, curated collections, product details, cart, checkout, account, and admin management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
